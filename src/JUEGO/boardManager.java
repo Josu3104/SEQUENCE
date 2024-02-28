@@ -58,6 +58,11 @@ public class boardManager {
 
                     this.takeCard(Fila, Columna);
 
+                    //SWITCH USUARIO EN TURNO.GET TEAM, CAMBIA EL COLOR DE LA FICHA
+                    ImageIcon neoFicha = new ImageIcon("CARDS/redToken.png");
+                    Image Scalecard = neoFicha.getImage().getScaledInstance(lol[Fila][Columna].getWidth(), lol[Fila][Columna].getHeight(), Image.SCALE_SMOOTH);
+                    neoFicha = new ImageIcon(Scalecard);
+                    lol[Fila][Columna].getFichita().setIcon(neoFicha);
                 });
 
                 pan.add(lol[row][col]);
@@ -69,6 +74,7 @@ public class boardManager {
     private void takeCard(int row, int col) {
         if (lol[row][col].getTakenBy().equals("")) {
             lol[row][col].claimCard("a", 1);
+
             System.out.println(lol[row][col].getTakenBy());
 
         }
@@ -80,11 +86,12 @@ public class boardManager {
             for (int col = 0; col < 10; col++) {
                 if (lol[row][col].isChecked()) {
 
-                    if (this.checkXnY(row, col)) {
+                    if (this.checkXnY(row, col)||this.checkDiagonal(row, col)) {
                         JOptionPane.showMessageDialog(null, "SECUENCIA ENCONTRADA");
                         return true;
                     }
-                }
+
+                } 
             }
         }
 
@@ -119,6 +126,7 @@ public class boardManager {
             if (validPos(row + i, col) && lol[row + i][col].isChecked()) {
 
                 contVertical++;
+
             } else {
                 contVertical = 0;
             }
@@ -128,12 +136,59 @@ public class boardManager {
             if (validPos(row - i, col) && lol[row - i][col].isChecked()) {
 
                 contVertical++;
+
             } else {
                 contVertical = 0;
             }
         }
 
         return contHorizontal == 5 || contVertical == 5;
+    }
+
+    private boolean checkDiagonal(int row, int col) {
+        int NE = 0, SW = 0, NW = 0, SE = 0;
+
+        //Diag North East 
+        for (int i = 0; i < 5; i++) {
+            if (validPos(row + i, col + i) && lol[row + i][col + i].isChecked()) {
+
+                NE++;
+
+            } else {
+                NE = 0;
+            }
+        }
+        //Diag South West
+        for (int i = 0; i < 5; i++) {
+            if (validPos(row - i, col - i) && lol[row - i][col - i].isChecked()) {
+
+                SW++;
+
+            } else {
+                SW = 0;
+            }
+        }
+
+        // Diag North West
+        for (int i = 0; i < 5; i++) {
+            if (validPos(row + i, col - i) && lol[row + i][col - i].isChecked()) {
+                NW++;
+            } else {
+                NW = 0;
+            }
+        }
+
+        // Diag South East
+        for (int i = 0; i < 5; i++) {
+            if (validPos(row - i, col + i) && lol[row - i][col + i].isChecked()) {
+                SE++;
+            } else {
+                SE = 0;
+            }
+        }
+
+        return NE == 5 || SW == 5 || NW == 5 || SE == 5;
+
     }
 
     private boolean validPos(int row, int col) {

@@ -7,8 +7,10 @@ package MENU;
 import JUEGO.BOARD;
 import USUARIO.ManagerUsuarios;
 import USUARIO.Usuario;
+import java.awt.Component;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -28,6 +30,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         this.REG_TAB.setVisible(false);
         this.PLAY_TAB.setVisible(false);
+        this.MAIN_MENU.setVisible(false);
+        
 
         try {
             managerUsers = new ManagerUsuarios();
@@ -49,8 +53,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         MAIN_MENU = new javax.swing.JPanel();
-        REGISTER = new javax.swing.JButton();
-        LOGIN = new javax.swing.JButton();
         PLAY = new javax.swing.JButton();
         REG_TAB = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -70,6 +72,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pass1 = new javax.swing.JTextField();
         fullName1 = new javax.swing.JTextField();
         Reg_Checkout1 = new javax.swing.JButton();
+        LOG_IN = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        usLogin = new javax.swing.JTextField();
+        passLogin = new javax.swing.JTextField();
+        checkOut = new javax.swing.JButton();
+        reg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -79,19 +88,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MAIN_MENU.setPreferredSize(new java.awt.Dimension(1920, 1080));
         MAIN_MENU.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        REGISTER.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        REGISTER.setText("REGISTRO");
-        REGISTER.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                REGISTERActionPerformed(evt);
-            }
-        });
-        MAIN_MENU.add(REGISTER, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 330, 90));
-
-        LOGIN.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        LOGIN.setText("INICIO DE SESION");
-        MAIN_MENU.add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 330, 90));
-
         PLAY.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         PLAY.setText("JUGAR");
         PLAY.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +95,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 PLAYActionPerformed(evt);
             }
         });
-        MAIN_MENU.add(PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 610, 330, 90));
+        MAIN_MENU.add(PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 330, 90));
 
         REG_TAB.setBackground(new java.awt.Color(51, 0, 0));
         REG_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -178,11 +174,49 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Reg_Checkout1.setText("REGISTRARSE");
         PLAY_TAB.add(Reg_Checkout1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 690, 330, 90));
 
+        LOG_IN.setBackground(new java.awt.Color(51, 0, 0));
+        LOG_IN.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        LOG_IN.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel9.setText("USUARIO");
+        LOG_IN.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 230, 100));
+
+        jLabel10.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel10.setText("CONTRASEñA");
+        LOG_IN.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 230, 100));
+
+        usLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        usLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LOG_IN.add(usLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 550, 80));
+
+        passLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        passLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LOG_IN.add(passLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 550, 80));
+
+        checkOut.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        checkOut.setText("INICIAR SESION");
+        checkOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutActionPerformed(evt);
+            }
+        });
+        LOG_IN.add(checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 690, 330, 90));
+
+        reg.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        reg.setText("REGISTRARME");
+        reg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regActionPerformed(evt);
+            }
+        });
+        LOG_IN.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 690, 310, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1920, Short.MAX_VALUE)
+            .addComponent(MAIN_MENU, javax.swing.GroupLayout.DEFAULT_SIZE, 1932, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -194,14 +228,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(PLAY_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(MAIN_MENU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(0, 6, Short.MAX_VALUE)
+                    .addComponent(LOG_IN, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addComponent(MAIN_MENU, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -213,20 +246,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(PLAY_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(MAIN_MENU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(0, 6, Short.MAX_VALUE)
+                    .addComponent(LOG_IN, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void REGISTERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGISTERActionPerformed
-        this.REG_TAB.setVisible(true);
-        this.MAIN_MENU.setVisible(false);
-
-    }//GEN-LAST:event_REGISTERActionPerformed
 
     private void PLAYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PLAYActionPerformed
         this.PLAY_TAB.setVisible(true);
@@ -243,28 +269,83 @@ public class MenuPrincipal extends javax.swing.JFrame {
             name = this.fullName.getText();
             user = this.us.getText();
             pw = this.pass.getText();
-            if (name != null && user != null && pw != null&&confPass!=null) {
-                if (managerUsers.SearchUser(user)==null) {
-                    if(!confPass.getText().equals(pass.getText())){
+            if (name != null && user != null && pw != null && confPass != null) {
+                if (managerUsers.SearchUser(user) == null) {
+                    if (!confPass.getText().equals(pass.getText())) {
                         JOptionPane.showMessageDialog(null, "LAS CONTRASEñA NO COINCIDE");
                         return;
                     }
                     managerUsers.Serializer(new Usuario(name, user, pw));
                     JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO");
                     System.out.println(managerUsers.SearchUser(user).getNAME() + " Has been Registered");
-                }else{
+
+                    //Limpieza de textFields
+                    for (Component a : this.REG_TAB.getComponents()) {
+
+                        if (a instanceof JTextField) {
+
+                            JTextField text = (JTextField) a;
+                            text.setText(null);
+                        }
+
+                    }
+                    this.REG_TAB.setVisible(false);
+                    this.LOG_IN.setVisible(true);
+                   
+
+                } else {
                     JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO EN USO");
                 }
 
             } else {
                 JOptionPane.showMessageDialog(null, "LLENE TODOS LOS CAMPOS");
             }
-        } catch (IOException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
         }
 
 
     }//GEN-LAST:event_Reg_CheckoutActionPerformed
+
+    private void checkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutActionPerformed
+        String user, pw;
+       
+        user = this.usLogin.getText();
+        pw = this.passLogin.getText();
+      try{ 
+        if (user!= null && pw != null){
+            Usuario temp = managerUsers.SearchUser(user);
+            if(user.equals(temp.getUsername())&&pw.equals(temp.getPassword())){
+                JOptionPane.showMessageDialog(null, "Bienvenido "+temp.getNAME()+" ^ - ^");
+                
+                //Limpieza
+                 for (Component a : this.LOG_IN.getComponents()) {
+
+                        if (a instanceof JTextField) {
+
+                             ((JTextField) a).setText(null);
+                            
+                        }
+
+                    }
+                 this.LOG_IN.setVisible(false);
+                 this.MAIN_MENU.setVisible(true);
+                 
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEñA INCORRECTO");
+            }
+        }else  JOptionPane.showMessageDialog(null, "LLENE TODOS LOS CAMPOS");
+      }catch(IOException | ClassNotFoundException e){
+          System.out.println(e.getMessage());
+      }
+    }//GEN-LAST:event_checkOutActionPerformed
+
+    private void regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regActionPerformed
+        this.LOG_IN.setVisible(false);
+        this.REG_TAB.setVisible(true);
+
+    }//GEN-LAST:event_regActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,27 +383,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LOGIN;
+    private javax.swing.JPanel LOG_IN;
     private javax.swing.JPanel MAIN_MENU;
     private javax.swing.JButton PLAY;
     private javax.swing.JPanel PLAY_TAB;
-    private javax.swing.JButton REGISTER;
     private javax.swing.JPanel REG_TAB;
     private javax.swing.JButton Reg_Checkout;
     private javax.swing.JButton Reg_Checkout1;
+    private javax.swing.JButton checkOut;
     private javax.swing.JTextField confPass;
     private javax.swing.JTextField fullName;
     private javax.swing.JTextField fullName1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField pass1;
+    private javax.swing.JTextField passLogin;
+    private javax.swing.JButton reg;
     private javax.swing.JTextField us;
     private javax.swing.JTextField us1;
+    private javax.swing.JTextField usLogin;
     // End of variables declaration//GEN-END:variables
 }

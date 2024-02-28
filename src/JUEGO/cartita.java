@@ -5,6 +5,7 @@
 package JUEGO;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,6 +18,7 @@ public class cartita extends JButton {
     private int row, col;
     private boolean Checked;
     private boolean alreadySequenced;
+    private JLabel fichita;
 
     public cartita(int row, int col) {
         takenBy = "";
@@ -24,6 +26,8 @@ public class cartita extends JButton {
         this.col = col;
         Checked = false;
         alreadySequenced = false;
+         fichita = new JLabel();
+        this.add(fichita);
     }
 
     public void claimCard(String name, int team) {
@@ -64,5 +68,15 @@ public class cartita extends JButton {
     public void setAlreadySequenced(boolean alreadySequenced) {
         this.alreadySequenced = alreadySequenced;
     }
+
+    public JLabel getFichita() {
+        return fichita;
+    }
+
+    public void setFichita(JLabel fichita) {
+        this.fichita = fichita;
+    }
+    
+    
 
 }
