@@ -14,13 +14,13 @@ import java.util.Date;
  */
 public class Usuario implements Serializable {
 
-    protected String NAME;
-    protected String username;
-    protected int puntos;
-    protected Date fechaCreacion;
-    protected String password;
-    protected int team;
-    protected ArrayList<String> historial;
+    private String NAME;
+    private String username;
+    private int puntos;
+    private Date fechaCreacion;
+    private String password;
+    private int team;
+    private ArrayList<String> historial;
 
     public Usuario(String name, String user, String password) {
         this.NAME = name;

@@ -265,19 +265,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void Reg_CheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Reg_CheckoutActionPerformed
         try {
-            String name, user, pw;
-            name = this.fullName.getText();
-            user = this.us.getText();
-            pw = this.pass.getText();
-            if (name != null && user != null && pw != null && confPass != null) {
-                if (managerUsers.SearchUser(user) == null) {
+           
+            if (!this.fullName.getText().isEmpty()&&!this.us.getText().isEmpty()&&!this.pass.getText().isEmpty()&&!this.confPass.getText().isEmpty()) {
+                if (managerUsers.SearchUser(this.us.getText()) == null) {
                     if (!confPass.getText().equals(pass.getText())) {
                         JOptionPane.showMessageDialog(null, "LAS CONTRASEñA NO COINCIDE");
                         return;
                     }
-                    managerUsers.Serializer(new Usuario(name, user, pw));
+                   managerUsers.createUserFolder(fullName.getText(), us.getText(), pass.getText());
                     JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO");
-                    System.out.println(managerUsers.SearchUser(user).getNAME() + " Has been Registered");
+                    System.out.println(managerUsers.SearchUser(this.us.getText()).getNAME() + " Has been Registered");
 
                     //Limpieza de textFields
                     for (Component a : this.REG_TAB.getComponents()) {
@@ -313,9 +310,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         user = this.usLogin.getText();
         pw = this.passLogin.getText();
       try{ 
-        if (user!= null && pw != null){
+        if (!user.isEmpty() && !pw.isEmpty()){
             Usuario temp = managerUsers.SearchUser(user);
-            if(user.equals(temp.getUsername())&&pw.equals(temp.getPassword())){
+            if(temp!=null&&user.equals(temp.getUsername())&&pw.equals(temp.getPassword())){
                 JOptionPane.showMessageDialog(null, "Bienvenido "+temp.getNAME()+" ^ - ^");
                 
                 //Limpieza
